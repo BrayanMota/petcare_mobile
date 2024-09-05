@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcare/components/custom_appbar.dart';
+import 'package:petcare/components/custom_drawer.dart';
 import 'package:petcare/routes.dart';
 import 'package:petcare/utils/custom_colors.dart';
 import '../../../models/pet.dart';
@@ -7,17 +8,19 @@ import '../../../components/pet_list_item.dart';
 import '../../../data/mock_data.dart';
 
 class ListPetsPage extends StatefulWidget {
+  const ListPetsPage({super.key});
+
   @override
   _ListPetsPageState createState() => _ListPetsPageState();
 }
 
 class _ListPetsPageState extends State<ListPetsPage> {
-  // Usando a lista mockada
   List<Pet> pets = mockPets;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Meus Pets',
       ),
@@ -44,7 +47,9 @@ class _ListPetsPageState extends State<ListPetsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('/create_pet');
+          Navigator.of(context).pushNamed(
+            RoutePaths.createPet,
+          );
         },
         backgroundColor: CustomColors.primaryColor,
         child: const Icon(

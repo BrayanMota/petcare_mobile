@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/components/custom_drawer.dart';
+import 'package:petcare/routes.dart';
 import 'package:petcare/utils/custom_colors.dart';
 
 import '../../components/custom_appbar.dart';
@@ -45,78 +47,77 @@ class _UpdatePetPageState extends State<UpdatePetPage> {
 
         Navigator.pushNamedAndRemoveUntil(
           context,
-          '/',
+          RoutePaths.home,
           (route) => false,
         );
       }
     }
 
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Atualizar Pet',
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                PetFormField(
-                  label: 'Nome',
-                  controller: nameController,
-                ),
-                PetFormField(
-                  label: 'Raça',
-                  controller: breedController,
-                ),
-                PetFormField(
-                  label: 'Tipo',
-                  controller: typeController,
-                ),
-                PetFormField(
-                  label: 'Idade',
-                  controller: ageController,
-                  keyboardType: TextInputType.number,
-                ),
-                PetFormField(
-                  label: 'Dono',
-                  controller: ownerNameController,
-                ),
-                PetFormField(
-                  label: 'Peso (kg)',
-                  controller: weightController,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Voltar',
-                        style: TextStyle(
-                          color: CustomColors.primaryColor,
-                        ),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              PetFormField(
+                label: 'Nome',
+                controller: nameController,
+              ),
+              PetFormField(
+                label: 'Raça',
+                controller: breedController,
+              ),
+              PetFormField(
+                label: 'Tipo',
+                controller: typeController,
+              ),
+              PetFormField(
+                label: 'Idade',
+                controller: ageController,
+                keyboardType: TextInputType.number,
+              ),
+              PetFormField(
+                label: 'Dono',
+                controller: ownerNameController,
+              ),
+              PetFormField(
+                label: 'Peso (kg)',
+                controller: weightController,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Voltar',
+                      style: TextStyle(
+                        color: CustomColors.primaryColor,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: updatePet,
-                      child: const Text(
-                        'Atualizar',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                  ),
+                  ElevatedButton(
+                    onPressed: updatePet,
+                    child: const Text(
+                      'Atualizar',
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

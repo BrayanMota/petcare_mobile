@@ -21,15 +21,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       backgroundColor: backgroundColor,
-      leading: Builder(
-        builder: (BuildContext context) {
-          return const IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-            onPressed: null,
-          );
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        color: Colors.white, // Define a cor do ícone
+        onPressed: () {
+          Scaffold.of(context).openDrawer(); // Abre o Drawer
         },
       ),
     );

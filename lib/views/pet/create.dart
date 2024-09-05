@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/components/custom_drawer.dart';
+import 'package:petcare/routes.dart';
 import 'package:petcare/utils/custom_colors.dart';
 
 import '../../components/custom_appbar.dart';
@@ -42,66 +44,65 @@ class _CreatePetPageState extends State<CreatePetPage> {
         pets.add(newPet);
         Navigator.pushNamedAndRemoveUntil(
           context,
-          '/',
+          RoutePaths.home,
           (route) => false,
         );
       }
     }
 
     return Scaffold(
+      drawer: const CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Adicionar Pet',
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                PetFormField(label: 'Nome', controller: _nameController),
-                PetFormField(label: 'Raça', controller: _breedController),
-                PetFormField(label: 'Tipo', controller: _typeController),
-                PetFormField(
-                  label: 'Idade',
-                  controller: _ageController,
-                  keyboardType: TextInputType.number,
-                ),
-                PetFormField(label: 'Dono', controller: _ownerNameController),
-                PetFormField(
-                  label: 'Peso(kg)',
-                  controller: _weightController,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Voltar',
-                        style: TextStyle(
-                          color: CustomColors.primaryColor,
-                        ),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              PetFormField(label: 'Nome', controller: _nameController),
+              PetFormField(label: 'Raça', controller: _breedController),
+              PetFormField(label: 'Tipo', controller: _typeController),
+              PetFormField(
+                label: 'Idade',
+                controller: _ageController,
+                keyboardType: TextInputType.number,
+              ),
+              PetFormField(label: 'Dono', controller: _ownerNameController),
+              PetFormField(
+                label: 'Peso(kg)',
+                controller: _weightController,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Voltar',
+                      style: TextStyle(
+                        color: CustomColors.primaryColor,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: addNewPet,
-                      child: const Text(
-                        'Salvar',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                  ),
+                  ElevatedButton(
+                    onPressed: addNewPet,
+                    child: const Text(
+                      'Salvar',
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
