@@ -1,7 +1,7 @@
 import '../models/pet.dart';
 
 List<Pet> mockPets = [
-  Pet(
+  Pet.withId(
     id: '1',
     name: 'Rex',
     breed: 'Labrador',
@@ -10,7 +10,7 @@ List<Pet> mockPets = [
     ownerName: 'João Silva',
     weight: 30.0,
   ),
-  Pet(
+  Pet.withId(
     id: '2',
     name: 'Milo',
     breed: 'Siamês',
@@ -19,7 +19,7 @@ List<Pet> mockPets = [
     ownerName: 'Maria Souza',
     weight: 4.5,
   ),
-  Pet(
+  Pet.withId(
     id: '3',
     name: 'Bella',
     breed: 'Bulldog',
@@ -28,7 +28,7 @@ List<Pet> mockPets = [
     ownerName: 'Alice Oliveira',
     weight: 22.0,
   ),
-  Pet(
+  Pet.withId(
     id: '4',
     name: 'Charlie',
     breed: 'Persa',

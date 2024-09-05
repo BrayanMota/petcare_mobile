@@ -1,0 +1,36 @@
+{
+    "pets": {
+        "pet1": {
+            "name": "Rex",
+            "breed": "Labrador",
+            "type": "Cachorro",
+            "age": 5,
+            "ownerName": "João Silva",
+            "weight": 30.0
+        },
+        "pet2": {
+            "name": "Milo",
+            "breed": "Siamês",
+            "type": "Gato",
+            "age": 3,
+            "ownerName": "Maria Souza",
+            "weight": 4.5
+        },
+        "pet3": {
+            "name": "Bella",
+            "breed": "Bulldog",
+            "type": "Cachorro",
+            "age": 4,
+            "ownerName": "Alice Oliveira",
+            "weight": 22.0
+        },
+        "pet4": {
+            "name": "Charlie",
+            "breed": "Persa",
+            "type": "Gato",
+            "age": 2,
+            "ownerName": "Roberto Lima",
+            "weight": 5.0
+        }
+    }
+}

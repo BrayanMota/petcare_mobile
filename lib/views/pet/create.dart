@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:petcare/components/custom_drawer.dart';
-import 'package:petcare/routes.dart';
+import 'package:petcare/providers/pet_provider.dart';
 import 'package:petcare/utils/custom_colors.dart';
+import 'package:provider/provider.dart';
 
 import '../../components/custom_appbar.dart';
 import '../../components/pet_form_field.dart';
-import '../../data/mock_data.dart';
 import '../../models/pet.dart';
 
 class CreatePetPage extends StatefulWidget {
@@ -27,13 +27,11 @@ class _CreatePetPageState extends State<CreatePetPage> {
 
   @override
   Widget build(BuildContext context) {
+    PetProvider petProvider = Provider.of<PetProvider>(context);
+
     void addNewPet() {
       if (_formKey.currentState!.validate()) {
-        List<Pet> pets = mockPets;
-        String lastID = pets.last.id;
-        String nextID = (int.parse(lastID) + 1).toString();
-        final newPet = Pet(
-          id: nextID,
+        Pet pet = Pet(
           name: _nameController.text,
           breed: _breedController.text,
           type: _typeController.text,
@@ -41,12 +39,7 @@ class _CreatePetPageState extends State<CreatePetPage> {
           ownerName: _ownerNameController.text,
           weight: double.parse(_weightController.text),
         );
-        pets.add(newPet);
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          RoutePaths.home,
-          (route) => false,
-        );
+        petProvider.create(pet).then((value) => Navigator.pop(context));
       }
     }
 
