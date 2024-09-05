@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:petcare/routes.dart';
 import 'package:petcare/utils/custom_colors.dart';
@@ -39,30 +40,32 @@ class DrawerListTile extends StatelessWidget {
 }
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  CustomDrawer({super.key});
+
+  final email = FirebaseAuth.instance.currentUser?.email ?? '';
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: [
-          const UserAccountsDrawerHeader(
-            accountName: Text('Nome do Usuário'),
-            accountEmail: Text('email@dominio.com'),
-            currentAccountPicture: CircleAvatar(
+          UserAccountsDrawerHeader(
+            accountName: const Text('Nome do Usuário'),
+            accountEmail: Text(email),
+            currentAccountPicture: const CircleAvatar(
               backgroundColor: Colors.white,
               child: Icon(
                 Icons.person,
                 color: CustomColors.primaryColor,
               ),
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: CustomColors.primaryColor,
             ),
           ),
           DrawerListTile(
             title: 'Perfil',
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
             ),
             onTap: () {
@@ -73,6 +76,7 @@ class CustomDrawer extends StatelessWidget {
             title: 'Sair',
             icon: const Icon(Icons.logout),
             onTap: () {
+              FirebaseAuth.instance.signOut();
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 RoutePaths.login,
@@ -80,7 +84,7 @@ class CustomDrawer extends StatelessWidget {
               );
             },
           ),
-          Spacer(), // Adiciona espaço no final do Drawer
+          const Spacer(), // Adiciona espaço no final do Drawer
         ],
       ),
     );

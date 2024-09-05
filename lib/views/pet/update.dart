@@ -56,7 +56,7 @@ class _UpdatePetPageState extends State<UpdatePetPage> {
     }
 
     return Scaffold(
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Atualizar Pet',
       ),

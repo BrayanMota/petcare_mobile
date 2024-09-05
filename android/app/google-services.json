@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "805516557560",
+    "firebase_url": "https://petcare-7a6ca-default-rtdb.firebaseio.com",
+    "project_id": "petcare-7a6ca",
+    "storage_bucket": "petcare-7a6ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805516557560:android:cc6ad7b5f667bca54c8f0d",
+        "android_client_info": {
+          "package_name": "com.example.petcare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQriL-Vr5sdiugsb6ttkdqA8EEn-e1ksY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

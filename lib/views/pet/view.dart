@@ -85,7 +85,7 @@ class ViewPetPage extends StatelessWidget {
     PetProvider petProvider = Provider.of<PetProvider>(context);
 
     return Scaffold(
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Detalhes',
       ),

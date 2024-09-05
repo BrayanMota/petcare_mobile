@@ -51,7 +51,7 @@ class _ListPetsPageState extends State<ListPetsPage> {
         setState(() {});
       },
       child: Scaffold(
-        drawer: const CustomDrawer(),
+        drawer: CustomDrawer(),
         appBar: const CustomAppBar(
           title: 'Meus Pets',
         ),

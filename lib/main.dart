@@ -3,8 +3,14 @@ import 'package:petcare/providers/pet_provider.dart';
 import 'package:petcare/utils/custom_theme.dart';
 import 'package:provider/provider.dart';
 import 'routes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

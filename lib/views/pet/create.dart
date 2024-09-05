@@ -44,7 +44,7 @@ class _CreatePetPageState extends State<CreatePetPage> {
     }
 
     return Scaffold(
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       appBar: const CustomAppBar(
         title: 'Adicionar Pet',
       ),

@@ -1,16 +1,59 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/auth_form_field.dart';
 import '../../routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  bool _isLoading = false;
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  Future<bool> _login() async {
+    String email = emailController.text;
+    String password = passwordController.text;
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final signIn = _auth.signInWithEmailAndPassword;
+      UserCredential userCredential = await signIn(
+        email: email,
+        password: password,
+      );
+      User? user = userCredential.user;
+      return true;
+    } catch (e) {
+      showSnackBar('Erro ao tentar fazer login: $e');
+      setState(() {
+        _isLoading = false;
+      });
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,20 +81,30 @@ class LoginPage extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, RoutePaths.home);
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50),
-              ),
-              child: const Text(
-                'Entrar',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            _isLoading
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: () {
+                      _login().then((value) {
+                        if (value) {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            RoutePaths.home,
+                            (route) => false,
+                          );
+                        }
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50),
+                    ),
+                    child: const Text(
+                      'Entrar',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
             const SizedBox(height: 20),
             TextButton(
               onPressed: () {

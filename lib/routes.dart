@@ -24,7 +24,7 @@ class RoutePaths {
       createPet: (context) => const CreatePetPage(),
       viewPet: (context) => const ViewPetPage(),
       updatePet: (context) => const UpdatePetPage(),
-      login: (context) => const LoginPage(),
+      login: (context) => LoginPage(),
       register: (context) => const RegisterPage(),
       forgetPassword: (context) => const ForgetPasswordPage(),
       profile: (context) => const ProfilePage(),
