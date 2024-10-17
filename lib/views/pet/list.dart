@@ -9,7 +9,6 @@ import 'package:petcare/utils/custom_colors.dart';
 import 'package:provider/provider.dart';
 import '../../../models/pet.dart';
 import '../../../components/pet_list_item.dart';
-import '../../../data/mock_data.dart';
 
 class ListPetsPage extends StatefulWidget {
   const ListPetsPage({super.key});

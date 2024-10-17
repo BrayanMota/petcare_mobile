@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## Version
+
+3.24.3
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

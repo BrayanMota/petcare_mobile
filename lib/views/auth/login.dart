@@ -85,15 +85,15 @@ class _LoginPageState extends State<LoginPage> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: () {
-                      _login().then((value) {
-                        if (value) {
-                          Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            RoutePaths.home,
-                            (route) => false,
-                          );
-                        }
-                      });
+                      // _login().then((value) {
+                      //   if (value) {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        RoutePaths.home,
+                        (route) => false,
+                      );
+                      //   }
+                      // });
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),

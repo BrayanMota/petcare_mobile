@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/providers/disease_provider.dart';
 import 'package:petcare/providers/pet_provider.dart';
 import 'package:petcare/utils/custom_theme.dart';
 import 'package:provider/provider.dart';
@@ -19,8 +20,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => PetProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => PetProvider()),
+        ChangeNotifierProvider(create: (context) => DiseaseProvider()),
+        ChangeNotifierProvider(
+            create: (context) => PresentationDiseaseProvider()),
+      ],
       child: MaterialApp(
         title: 'PetCare',
         debugShowCheckedModeBanner: false,
