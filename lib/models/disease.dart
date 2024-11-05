@@ -2,42 +2,32 @@ class Disease {
   String? id;
   String nome;
   String descricao;
-  String sinaisClinicos;
-  String transmissao;
-  String tratamentos;
+  String? imagem;
 
   Disease({
     required this.nome,
     required this.descricao,
-    required this.sinaisClinicos,
-    required this.transmissao,
-    required this.tratamentos,
+    required this.imagem,
   });
 
   Disease.withId({
     required this.id,
     required this.nome,
     required this.descricao,
-    required this.sinaisClinicos,
-    required this.transmissao,
-    required this.tratamentos,
+    required this.imagem,
   });
 
   Map<String, dynamic> toJson() => {
         'nome': nome,
         'descricao': descricao,
-        'sinais_clinicos': sinaisClinicos,
-        'transmissao': transmissao,
-        'tratamentos': tratamentos,
+        'imagem': imagem,
       };
 
   Disease.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         nome = json['nome'],
         descricao = json['descricao'],
-        sinaisClinicos = json['sinais_clinicos'],
-        transmissao = json['transmissao'],
-        tratamentos = json['tratamentos'];
+        imagem = json['imagem'];
 
   static List<Disease> listFromJson(List<dynamic> jsonList) {
     return jsonList.map((item) => Disease.fromJson(item)).toList();
@@ -49,6 +39,7 @@ class PresentationDisease {
   String doenca;
   int ordem;
   String tipo;
+  String topico;
   String? texto;
   String? imagem;
 
@@ -56,6 +47,7 @@ class PresentationDisease {
     required this.doenca,
     required this.ordem,
     required this.tipo,
+    required this.topico,
     this.texto = '',
     this.imagem = '',
   });
@@ -72,6 +64,7 @@ class PresentationDisease {
       : id = json['id'],
         doenca = json['doenca'],
         ordem = json['ordem'],
+        topico = json['topico'],
         tipo = json['tipo_conteudo'],
         texto = json['conteudo_texto'],
         imagem = json['conteudo_imagem'];

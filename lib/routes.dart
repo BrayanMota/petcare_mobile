@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcare/views/disease/apresentations.dart';
+import 'package:petcare/views/disease/detail.dart';
 import 'package:petcare/views/disease/list.dart';
 import 'package:petcare/views/home.dart';
 import 'views/auth/forget_password.dart';
@@ -17,6 +18,7 @@ class RoutePaths {
   static const String listPet = '/list_pet';
   static const String createPet = '/create_pet';
   static const String viewDisease = '/view_disease';
+  static const String presentationDisease = '/presentation_disease';
   static const String viewPet = '/view_pet';
   static const String updatePet = '/update_pet';
   static const String login = '/login';
@@ -31,6 +33,7 @@ class RoutePaths {
       listPet: (context) => const ListPetsPage(),
       createPet: (context) => const CreatePetPage(),
       viewDisease: (context) => const ViewDiseasePage(),
+      presentationDisease: (context) => const PresentationDiseasePage(),
       viewPet: (context) => const ViewPetPage(),
       updatePet: (context) => const UpdatePetPage(),
       login: (context) => LoginPage(),

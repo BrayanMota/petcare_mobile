@@ -5,11 +5,10 @@ import 'package:petcare/components/custom_messages.dart';
 import 'package:petcare/components/custom_progress_indicator.dart';
 import 'package:petcare/models/disease.dart';
 import 'package:petcare/providers/disease_provider.dart';
-import 'package:petcare/utils/custom_colors.dart';
 import 'package:provider/provider.dart';
 
-class ViewDiseasePage extends StatelessWidget {
-  const ViewDiseasePage({super.key});
+class PresentationDiseasePage extends StatelessWidget {
+  const PresentationDiseasePage({super.key});
 
   Widget listBuider(
       BuildContext context, List<PresentationDisease> presentation) {
@@ -48,8 +47,9 @@ class ViewDiseasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String diseaseId =
-        ModalRoute.of(context)?.settings.arguments as String;
+    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final diseaseId = args['doenca'] as String;
+    final topico = args['topico'] as String;
 
     PresentationDiseaseProvider diseaseProvider =
         Provider.of<PresentationDiseaseProvider>(context);
